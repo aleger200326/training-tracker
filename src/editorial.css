@@ -224,7 +224,7 @@ html[data-theme=dark] .side-hand-note { background: var(--paper); }
 html[data-theme=dark] .equipment-chips button.selected { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
 .week-day, .calendar-day, .calendar-blank { background: var(--paper); border-color: var(--line); color: var(--ink); }
 .recommendation-panel, .advice-panel { background: #dfe9ef; color: #202a32; border-color: var(--line); }
-.recommendation-hand-note { color: var(--accent); white-space: nowrap; margin: 0 10px 5px 12px; transform: rotate(-6deg); }
+.recommendation-hand-note { color: var(--accent); font-size: clamp(38px, 3vw, 48px); white-space: nowrap; margin: 0 10px 5px 12px; transform: rotate(-6deg); }
 html[data-theme=dark] .recommendation-panel, html[data-theme=dark] .advice-panel { background: #293c49; color: var(--ink); border-color: var(--line); }
 .rec-focus, .date-line, .text-button { color: var(--accent); }
 .week-day.current { border-color: var(--accent); }
