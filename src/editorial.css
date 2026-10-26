@@ -78,7 +78,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .entry-photo-bottom { border-top: 1px solid rgba(255,255,255,.55); padding-top: 12px; width: 100%; }
 .entry-account { background: var(--sheet); border-left: 1px solid var(--line); display: flex; flex-direction: column; min-width: 0; }
 html[data-theme=dark] .entry-account { background: #222622; }
-html[data-theme=dark] .entry-header { background: #1d2830; }
+html[data-theme=dark] .entry-header { background: var(--paper); }
 .entry-account-top { padding: 36px 32px 0; color: var(--quiet); }
 .entry-account-inner { width: 100%; padding: 32px; margin: auto 0; }
 .entry-account-title > span, .entry-section-heading > span { font-size: 11px; letter-spacing: .16em; font-weight: 700; color: var(--accent); text-transform: uppercase; }
@@ -231,7 +231,7 @@ html[data-theme=dark] .search-box, html[data-theme=dark] .filter-select, html[da
 
 /* Keep every dark surface neutral and reserve blue for active controls. */
 html[data-theme=dark] .sidebar { background: var(--paper); border-color: var(--line); }
-html[data-theme=dark] .topbar { background: #1d2830; border-color: var(--line); }
+html[data-theme=dark] .topbar { background: var(--paper); border-color: var(--line); }
 html[data-theme=dark] .topbar .breadcrumb,
 html[data-theme=dark] .topbar .today-pill { color: #d2e0e8; }
 html[data-theme=dark] .topbar .language-control select,
