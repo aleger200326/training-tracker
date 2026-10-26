@@ -265,6 +265,22 @@ html[data-theme=dark] .ghost-button { color: var(--ink); }
 html[data-theme=dark] .featured-card span,
 html[data-theme=dark] .featured-card svg:last-child { color: var(--accent); }
 
+/* A coordinated gym photo series sits beneath the blue dashboard surfaces. */
+html[data-theme=dark] .next-card {
+  background: linear-gradient(90deg, rgba(34,43,50,.97), rgba(34,43,50,.88) 58%, rgba(34,43,50,.73)), url('/images/dashboard-next.png') 68% center / cover no-repeat;
+}
+html[data-theme=dark] .next-card .empty-next-icon { color: var(--accent); }
+html[data-theme=dark] .stat-grid {
+  background: linear-gradient(rgba(34,43,50,.62), rgba(34,43,50,.62)), url('/images/dashboard-stats.png') center 54% / cover no-repeat;
+}
+html[data-theme=dark] .stat-card { background: rgba(34,43,50,.72); }
+html[data-theme=dark] .panel:not(.recommendation-panel):not(.advice-panel).week-panel {
+  background: linear-gradient(90deg, rgba(34,43,50,.98), rgba(34,43,50,.90) 62%, rgba(34,43,50,.72)), url('/images/dashboard-week.png') 68% center / cover no-repeat;
+}
+html[data-theme=dark] .recommendation-panel {
+  background: linear-gradient(90deg, rgba(34,43,50,.98), rgba(34,43,50,.90) 62%, rgba(34,43,50,.75)), url('/images/dashboard-recommendation.png') 65% center / cover no-repeat;
+}
+
 /* The image and its card share the same clipping edge at every grid width. */
 .featured-card, .exercise-card, .plan-card, .entry-preview-item { min-width: 0; overflow: hidden; }
 .featured-card { padding-top: 12px; }
