@@ -17,6 +17,8 @@
   --accent-soft: #e0ebf2;
   --accent-on-photo: #94c4df;
   --inverse: #ece9df;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
 }
 html[data-theme=dark] {
   --paper: #222622;
@@ -264,6 +266,42 @@ html[data-theme=dark] .featured-card svg:last-child { color: var(--accent); }
 .entry-preview-image { display: block; width: 100%; max-width: 100%; overflow: hidden; }
 .featured-card .exercise-image img, .exercise-card .exercise-image img,
 .entry-preview-image img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* Fast feedback for frequent actions, with movement reserved for occasional openings. */
+.entry-page, .shell, .main, .sidebar, .topbar, .entry-account,
+.entry-preview, .entry-preview-item, .panel, .stat-card, .next-card,
+.plan-card, .exercise-card, .featured-card, .catalog-toolbar,
+.recommendation-panel, .advice-panel {
+  transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease;
+}
+.nav-item, .focus-tabs button, .entry-preview-controls button,
+.entry-tabs button, .language-control select, .theme-control,
+.primary-button, .outline-button, .square-button, .entry-submit,
+.equipment-chips button, .week-day, .calendar-day {
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+.content { animation: content-in 180ms var(--ease-out) both; }
+@keyframes content-in { from { opacity: .78; } to { opacity: 1; } }
+.modal-backdrop, .entry-dialog-backdrop { animation: backdrop-in 220ms var(--ease-out) both; }
+.exercise-modal, .form-modal, .entry-dialog { animation: dialog-in 240ms var(--ease-out) both; transform-origin: center; }
+@keyframes backdrop-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes dialog-in { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: scale(1); } }
+@media (hover: hover) and (pointer: fine) {
+  .entry-preview-item .entry-preview-image img,
+  .featured-card .exercise-image img,
+  .exercise-card .exercise-image img { transition: transform 180ms var(--ease-out); }
+  .entry-preview-item:hover .entry-preview-image img,
+  .featured-card:hover .exercise-image img,
+  .exercise-card:hover .exercise-image img { transform: scale(1.025); }
+  .plan-card-preview-row strong { transition: color 160ms ease; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .content, .modal-backdrop, .entry-dialog-backdrop,
+  .exercise-modal, .form-modal, .entry-dialog { animation: none; }
+  .entry-preview-item .entry-preview-image img,
+  .featured-card .exercise-image img,
+  .exercise-card .exercise-image img { transition: none; transform: none; }
+}
 
 /* Each plan uses its full row for a quick, actionable exercise overview. */
 .plan-grid { grid-template-columns: 1fr; gap: 16px; border: 0; background: transparent; }
