@@ -113,17 +113,18 @@ export default function AuthGateEditorial({ children }: { children: (user: User,
       schedule()
     }
     const leave = () => { targetRadius = 0; schedule() }
+    const up = (event: PointerEvent) => { if (event.pointerType === 'touch') leave() }
     photo.addEventListener('pointermove', move)
     photo.addEventListener('pointerdown', move)
     photo.addEventListener('pointerleave', leave)
-    photo.addEventListener('pointerup', leave)
+    photo.addEventListener('pointerup', up)
     photo.addEventListener('pointercancel', leave)
     return () => {
       cancelAnimationFrame(frame)
       photo.removeEventListener('pointermove', move)
       photo.removeEventListener('pointerdown', move)
       photo.removeEventListener('pointerleave', leave)
-      photo.removeEventListener('pointerup', leave)
+      photo.removeEventListener('pointerup', up)
       photo.removeEventListener('pointercancel', leave)
     }
   }, [])
