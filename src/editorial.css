@@ -44,15 +44,15 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 /* Public entry: editorial photograph and an honest, working exercise preview. */
 .entry-page { min-height: 100vh; background: var(--paper); color: var(--ink); overflow-x: clip; }
 .entry-header, .entry-footer { max-width: 1540px; margin: auto; display: flex; align-items: center; }
-.entry-header { min-height: 74px; padding: 0 26px; gap: 30px; border-bottom: 1px solid var(--line); }
-.entry-logo { text-decoration: none; font: 800 29px/1 'Furore', sans-serif; letter-spacing: .035em; }
-.entry-header-note { font-size: 11px; font-weight: 700; letter-spacing: .14em; margin-left: auto; }
+.entry-header { min-height: 56px; padding: 0 22px; gap: 24px; border-bottom: 1px solid var(--line); }
+.entry-logo { text-decoration: none; font: 800 24px/1 'Furore', sans-serif; letter-spacing: .035em; }
+.entry-header-note { font-size: 10px; font-weight: 700; letter-spacing: .14em; margin-left: auto; }
 .entry-controls { display: flex; align-items: center; gap: 0; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
-.entry-controls select, .entry-controls button { height: 39px; background: transparent; border: 0; color: var(--ink); font-size: 12px; font-weight: 700; padding: 0 14px; }
-.entry-controls .entry-theme { width: 46px; display: grid; place-items: center; padding: 0; }
+.entry-controls select, .entry-controls button { height: 34px; background: transparent; border: 0; color: var(--ink); font-size: 12px; font-weight: 700; padding: 0 12px; }
+.entry-controls .entry-theme { width: 40px; display: grid; place-items: center; padding: 0; }
 .entry-controls select { border-right: 1px solid var(--line); }
 .entry-main { max-width: 1540px; margin: auto; }
-.entry-hero { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(315px, .72fr); min-height: min(770px, calc(100vh - 74px)); border-bottom: 1px solid var(--line); }
+.entry-hero { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(315px, .72fr); min-height: min(770px, calc(100vh - 56px)); border-bottom: 1px solid var(--line); }
 .entry-photo { position: relative; min-height: 640px; display: flex; flex-direction: column; padding: 24px 34px 28px; color: #f6f0e6; isolation: isolate; overflow: hidden; background: #272a27; }
 .entry-photo-base, .entry-photo-reveal { position: absolute; inset: 0; z-index: 0; background-position: center; background-size: cover; background-repeat: no-repeat; pointer-events: none; animation: entry-image-in 1.1s var(--ease-out) both; }
 .entry-photo-base { background-image: url('/images/georgrad-training-hero.png'); }
@@ -407,8 +407,8 @@ html[data-theme=dark] .panel:not(.recommendation-panel):not(.advice-panel).data-
   .entry-preview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 720px) {
-  .entry-header { min-height: 64px; padding: 0 16px; gap: 10px; }
-  .entry-logo { font-size: 25px; }
+  .entry-header { min-height: 52px; padding: 0 16px; gap: 10px; }
+  .entry-logo { font-size: 22px; }
   .entry-header-note { display: none; }
   .entry-controls { margin-left: auto; }
   .entry-hero { display: block; }
