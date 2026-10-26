@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Moon, Sun } from 'lucide-react'
 import { cloud, cloudConfigured } from './cloud'
 import { catalog, displayInstructions, displayName, imageUrl, placeOf } from './catalog'
 import { getUiLanguage, setUiLanguage, type Language } from './i18n'
@@ -181,7 +182,7 @@ export default function AuthGateEditorial({ children }: { children: (user: User,
         <select aria-label="Language / Til / Язык" value={language} onChange={e => { const next = e.target.value as Language; setUiLanguage(next); setLanguage(next) }}>
           <option value="ru">RU</option><option value="uz">UZ</option><option value="en">EN</option>
         </select>
-        <button type="button" className="entry-theme" aria-label={theme === 'dark' ? 'Светлая тема / Light theme' : 'Тёмная тема / Dark theme'} onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>{theme === 'dark' ? 'СВЕТ' : 'ТЬМА'}</button>
+        <button type="button" className="entry-theme" aria-label={theme === 'dark' ? 'Светлая тема / Light theme' : 'Тёмная тема / Dark theme'} title={theme === 'dark' ? 'Светлая тема' : 'Тёмная тема'} onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>{theme === 'dark' ? <Sun size={19} aria-hidden="true" /> : <Moon size={19} aria-hidden="true" />}</button>
       </div>
     </header>
 
