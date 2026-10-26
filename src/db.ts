@@ -3,7 +3,7 @@ import { openDB } from 'idb'
 export type Profile = { name: string; height: string; weight: string; goal: string; level: string; place: string; days: string; equipment: string[] }
 export type Exercise = { id: string; name: string; level: string; equipment: string; primaryMuscles: string[]; secondaryMuscles: string[]; instructions: string[]; images: string[]; category: string; custom?: boolean }
 export type PlanItem = { exerciseId: string; sets: number; reps: number }
-export type Plan = { id: string; name: string; focus: string; place: string; items: PlanItem[]; createdAt: string }
+export type Plan = { id: string; name: string; focus: string; place: string; items: PlanItem[]; createdAt: string; photoIndex?: number }
 export type Session = { id: string; date: string; planId: string; status: 'planned' | 'done' | 'missed'; note: string }
 export type AppData = { profile: Profile; customExercises: Exercise[]; plans: Plan[]; sessions: Session[] }
 

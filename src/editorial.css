@@ -280,6 +280,24 @@ html[data-theme=dark] .panel:not(.recommendation-panel):not(.advice-panel).week-
 html[data-theme=dark] .recommendation-panel {
   background: linear-gradient(90deg, rgba(34,43,50,.98), rgba(34,43,50,.90) 62%, rgba(34,43,50,.75)), url('/images/dashboard-recommendation.png') 65% center / cover no-repeat;
 }
+html[data-theme=dark] .stat-grid { background: var(--sheet); }
+html[data-theme=dark] .stat-card {
+  background-color: var(--sheet);
+  background-image: linear-gradient(90deg, rgba(34,43,50,.95), rgba(34,43,50,.84) 55%, rgba(34,43,50,.68)), var(--stat-photo);
+  background-size: cover;
+  background-position: right center;
+}
+html[data-theme=dark] .stat-card:nth-child(1) { --stat-photo: url('/images/stat-workouts.png'); }
+html[data-theme=dark] .stat-card:nth-child(2) { --stat-photo: url('/images/stat-completed.png'); }
+html[data-theme=dark] .stat-card:nth-child(3) { --stat-photo: url('/images/stat-missed.png'); }
+html[data-theme=dark] .stat-card:nth-child(4) { --stat-photo: url('/images/stat-goal.png'); }
+html[data-theme=dark] .empty-state.roomy {
+  background: linear-gradient(90deg, rgba(34,43,50,.96), rgba(34,43,50,.88) 60%, rgba(34,43,50,.66)), url('/images/plans-pullup.png') 76% center / cover no-repeat;
+  border-style: solid;
+}
+html[data-theme=dark] .plan-card-preview {
+  background: linear-gradient(90deg, rgba(34,43,50,.98), rgba(34,43,50,.90) 58%, rgba(34,43,50,.68)), var(--plan-photo) 72% center / cover no-repeat;
+}
 
 /* The image and its card share the same clipping edge at every grid width. */
 .featured-card, .exercise-card, .plan-card, .entry-preview-item { min-width: 0; overflow: hidden; }
