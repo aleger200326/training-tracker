@@ -3,6 +3,7 @@ import { cloud, cloudConfigured } from './cloud'
 import { catalog, displayInstructions, displayName, imageUrl, placeOf } from './catalog'
 import { getUiLanguage, setUiLanguage, type Language } from './i18n'
 import type { Exercise } from './db'
+import ExerciseMotion from './ExerciseMotion'
 
 type User = { id: string; email: string; name?: string }
 type Mode = 'in' | 'up'
@@ -83,6 +84,14 @@ export default function AuthGateEditorial({ children }: { children: (user: User,
 
   useEffect(() => { document.documentElement.dataset.theme = theme; localStorage.setItem('atletika-theme', theme) }, [theme])
   useEffect(() => { setUiLanguage(language); localStorage.setItem('atletika-language', language); document.documentElement.lang = language }, [language])
+  useEffect(() => {
+    if (!selected) return
+    const previous = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    const onKeyDown = (event: KeyboardEvent) => { if (event.key === 'Escape') setSelected(null) }
+    window.addEventListener('keydown', onKeyDown)
+    return () => { document.body.style.overflow = previous; window.removeEventListener('keydown', onKeyDown) }
+  }, [selected])
 
   async function refresh() {
     if (!cloud) return
@@ -174,6 +183,6 @@ export default function AuthGateEditorial({ children }: { children: (user: User,
     </main>
 
     <footer className="entry-footer"><strong>GEORGRAD</strong><span>{t.journal}</span><nav><a href="/privacy.html">{t.privacy}</a><a href="/terms.html">{t.terms}</a></nav></footer>
-    {selected && <div className="entry-dialog-backdrop" onMouseDown={() => setSelected(null)}><section role="dialog" aria-modal="true" aria-label={displayName(selected)} className="entry-dialog" onMouseDown={e => e.stopPropagation()}><button className="entry-dialog-close" onClick={() => setSelected(null)} aria-label={t.close}>×</button><div className="entry-dialog-photo"><PreviewPhoto exercise={selected} unavailable={t.unavailable} /></div><div><span>{t.how}</span><h2>{displayName(selected)}</h2><ol>{displayInstructions(selected).map((step, index) => <li key={index}>{step}</li>)}</ol><a href="#account" onClick={() => setSelected(null)}>{t.start} ↗</a></div></section></div>}
+    {selected && <div className="entry-dialog-backdrop" onMouseDown={() => setSelected(null)}><section role="dialog" aria-modal="true" aria-label={displayName(selected)} className="entry-dialog" onMouseDown={e => e.stopPropagation()}><button className="entry-dialog-close" onClick={() => setSelected(null)} aria-label={t.close}>×</button><div className="entry-dialog-photo"><ExerciseMotion exercise={selected} /></div><div className="entry-dialog-copy"><span>{t.how}</span><h2>{displayName(selected)}</h2><ol>{displayInstructions(selected).map((step, index) => <li key={index}>{step}</li>)}</ol><a href="#account" onClick={() => setSelected(null)}>{t.start} ↗</a></div></section></div>}
   </div>
 }

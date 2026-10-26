@@ -5,6 +5,7 @@ import { catalog, displayInstructions, displayName, equipmentLabel, focusOf, ima
 import { AppData, Exercise, initialData, Plan, PlanItem, Session, validImport } from './db';
 import { loadCloudData, saveCloudData } from './cloud';
 import AuthGate from './AuthGateEditorial';
+import ExerciseMotion from './ExerciseMotion';
 import { makeRecommendedPlan, makeStarterSchedule, recommendedFocus, suitableExercises } from './recommend';
 import { formatDate, getUiLanguage, localizedPlanName, profileAdviceText, recommendationAdviceText, setUiLanguage, uiText, type Language } from './i18n';
 import './style.css';
@@ -31,15 +32,6 @@ function ExerciseImage({ e, className = '' }: {
     useEffect(() => setFailed(false), [e.id]);
     return <div className={`exercise-image ${className}`}>{e.images?.[0] && !failed ? <img src={imageUrl(e.images[0])} alt={displayName(e)} loading="lazy" onError={() => setFailed(true)}/> : <div className="media-fallback" role="img" aria-label={uiText(mediaAlt)}><Dumbbell size={38}/><span>{uiText("\u041D\u0435\u0442 \u0438\u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F")}</span></div>}</div>;
 }
-function MotionDemo({ e }: {
-    e: Exercise;
-}) {
-    const [frame, setFrame] = useState(0);
-    const [failed, setFailed] = useState(false);
-    useEffect(() => { setFrame(0); setFailed(false); if ((e.images?.length || 0) < 2)
-        return; const id = window.setInterval(() => setFrame(v => 1 - v), 850); return () => clearInterval(id); }, [e.id, e.images]);
-    return <div className="motion-demo">{e.images?.[frame] && !failed ? <img src={imageUrl(e.images[frame])} alt={`${displayName(e)} — ${frame + 1}`} onError={() => setFailed(true)}/> : <div className="media-fallback"><Dumbbell size={44}/><span>{uiText("\u0414\u0435\u043C\u043E\u043D\u0441\u0442\u0440\u0430\u0446\u0438\u044F \u043D\u0435\u0434\u043E\u0441\u0442\u0443\u043F\u043D\u0430")}</span></div>}<span className="demo-badge">{uiText(e.images?.length > 1 && !failed ? 'Демонстрация движения · 2 кадра' : 'Фото упражнения')}</span></div>;
-}
 function App({ userId, email, signOut }: { userId: string; email: string; signOut: () => Promise<void> }) {
     const [language, setLanguage] = useState<Language>(getUiLanguage);
     const [theme, setTheme] = useState<'light' | 'dark'>(() => localStorage.getItem('atletika-theme') === 'dark' ? 'dark' : 'light');
@@ -49,6 +41,12 @@ function App({ userId, email, signOut }: { userId: string; email: string; signOu
     const [ready, setReady] = useState(false);
     const [tab, setTab] = useState<Tab>('dashboard');
     const [selected, setSelected] = useState<Exercise | null>(null);
+    useEffect(() => {
+        if (!selected) return;
+        const onKeyDown = (event: KeyboardEvent) => { if (event.key === 'Escape') { setSelected(null); document.body.style.overflow = ''; } };
+        window.addEventListener('keydown', onKeyDown);
+        return () => window.removeEventListener('keydown', onKeyDown);
+    }, [selected]);
     const [mobileNav, setMobileNav] = useState(false);
     const [toast, setToast] = useState('');
     const [loadError, setLoadError] = useState('');
@@ -87,7 +85,7 @@ function App({ userId, email, signOut }: { userId: string; email: string; signOu
         {tab === 'profile' && <ProfilePage data={data} exercises={exercises} setData={setData} setPart={setPart} toast={setToast} nav={nav}/>}
       </div>
     </main>
-    {selected && <div className="modal-backdrop" role="presentation" onMouseDown={closeExercise}><section className="exercise-modal" role="dialog" aria-modal="true" aria-label={displayName(selected)} onMouseDown={e => e.stopPropagation()}><button className="modal-close icon-button" aria-label={uiText("\u0417\u0430\u043A\u0440\u044B\u0442\u044C")} onClick={closeExercise}><X size={21}/></button><MotionDemo e={selected}/><div className="modal-copy"><div className="eyebrow">{uiText("\u0423\u041F\u0420\u0410\u0416\u041D\u0415\u041D\u0418\u0415 \u00B7 ")}{uiText(focusOf(selected)).toUpperCase()}</div><h2>{displayName(selected)}</h2>{getUiLanguage() !== 'en' && displayName(selected) !== selected.name && <p className="original-name">{selected.name}</p>}<div className="chips"><span>{uiText(equipmentLabel[String(selected.equipment)] || selected.equipment || 'Без оборудования')}</span><span>{uiText(levelLabel[selected.level] || selected.level)}</span><span>{uiText(placeOf(selected))}</span></div><h3>{uiText("\u041A\u0430\u043A \u0432\u044B\u043F\u043E\u043B\u043D\u044F\u0442\u044C")}</h3><ol>{displayInstructions(selected).length ? displayInstructions(selected).map((line, i) => <li key={i}>{line}</li>) : <li>{uiText("\u0414\u043E\u0431\u0430\u0432\u044C\u0442\u0435 \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435 \u0442\u0435\u0445\u043D\u0438\u043A\u0438 \u0432 \u0440\u0435\u0434\u0430\u043A\u0442\u043E\u0440\u0435 \u0443\u043F\u0440\u0430\u0436\u043D\u0435\u043D\u0438\u044F.")}</li>}</ol><div className="source-note">{uiText(selected.custom ? 'Ваше упражнение' : 'Источник: free-exercise-db · инструкции оригинального каталога могут быть на английском')}{!selected.custom && getUiLanguage() !== 'en' && <span> · {uiText('Машинный перевод: проверьте технику по демонстрации и исходному описанию.')}</span>}</div></div></section></div>}
+    {selected && <div className="modal-backdrop" role="presentation" onMouseDown={closeExercise}><section className="exercise-modal" role="dialog" aria-modal="true" aria-label={displayName(selected)} onMouseDown={e => e.stopPropagation()}><button className="modal-close icon-button" aria-label={uiText("\u0417\u0430\u043A\u0440\u044B\u0442\u044C")} onClick={closeExercise}><X size={21}/></button><div className="motion-demo"><ExerciseMotion exercise={selected}/></div><div className="modal-copy"><div className="eyebrow">{uiText("\u0423\u041F\u0420\u0410\u0416\u041D\u0415\u041D\u0418\u0415 \u00B7 ")}{uiText(focusOf(selected)).toUpperCase()}</div><h2>{displayName(selected)}</h2>{getUiLanguage() !== 'en' && displayName(selected) !== selected.name && <p className="original-name">{selected.name}</p>}<div className="chips"><span>{uiText(equipmentLabel[String(selected.equipment)] || selected.equipment || 'Без оборудования')}</span><span>{uiText(levelLabel[selected.level] || selected.level)}</span><span>{uiText(placeOf(selected))}</span></div><h3>{uiText("\u041A\u0430\u043A \u0432\u044B\u043F\u043E\u043B\u043D\u044F\u0442\u044C")}</h3><ol>{displayInstructions(selected).length ? displayInstructions(selected).map((line, i) => <li key={i}>{line}</li>) : <li>{uiText("\u0414\u043E\u0431\u0430\u0432\u044C\u0442\u0435 \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u0435 \u0442\u0435\u0445\u043D\u0438\u043A\u0438 \u0432 \u0440\u0435\u0434\u0430\u043A\u0442\u043E\u0440\u0435 \u0443\u043F\u0440\u0430\u0436\u043D\u0435\u043D\u0438\u044F.")}</li>}</ol><div className="source-note">{uiText(selected.custom ? 'Ваше упражнение' : 'Источник: free-exercise-db · инструкции оригинального каталога могут быть на английском')}{!selected.custom && getUiLanguage() !== 'en' && <span> · {uiText('Машинный перевод: проверьте технику по демонстрации и исходному описанию.')}</span>}</div></div></section></div>}
     {toast && <div className="toast" role="status">{toast}</div>}
   </div>;
 }
