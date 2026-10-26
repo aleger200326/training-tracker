@@ -22,6 +22,7 @@ const copy = {
     close: 'Закрыть', unavailable: 'Фото недоступно', view: 'Смотреть упражнение', privacy: 'Конфиденциальность',
     terms: 'Условия использования', start: 'Начать работу',
     rhythm: ['ПЛАНИРУЙ', 'ЗАПИСЫВАЙ', 'ПОВТОРЯЙ'],
+    shout: 'НАЧНИ',
   },
   uz: {
     journal: 'MASHG‘ULOTLAR KUNDALIGI', photoTop: 'ONG BILAN MASHQ QIL', photoBottom: 'REJA · HARAKAT · NATIJA', headline: <>HAR BIR<br />HARAKAT MUHIM.</>, mobileHeadline: <>HAR KUN<br />HISOBDA.</>,
@@ -37,6 +38,7 @@ const copy = {
     close: 'Yopish', unavailable: 'Rasm mavjud emas', view: 'Mashqni ko‘rish', privacy: 'Maxfiylik',
     terms: 'Foydalanish shartlari', start: 'Boshlash',
     rhythm: ['REJALA', 'YOZIB BOR', 'TAKRORLA'],
+    shout: 'BOSHLA',
   },
   en: {
     journal: 'TRAINING JOURNAL', photoTop: 'TRAIN WITH INTENTION', photoBottom: 'PLAN · MOVE · PROGRESS', headline: <>EVERY REP<br />COUNTS.</>, mobileHeadline: <>EVERY REP<br />COUNTS.</>,
@@ -52,6 +54,7 @@ const copy = {
     close: 'Close', unavailable: 'Image unavailable', view: 'View exercise', privacy: 'Privacy',
     terms: 'Terms of use', start: 'Get started',
     rhythm: ['PLAN', 'RECORD', 'REPEAT'],
+    shout: 'START',
   },
 }
 const previewOrder = ['Bodyweight_Squat', 'Dumbbell_Bench_Press', 'Pullups', 'Barbell_Bench_Press_-_Medium_Grip', 'Plank', 'Pushups']
@@ -133,7 +136,7 @@ export default function AuthGateEditorial({ children }: { children: (user: User,
       <section className="entry-hero" aria-labelledby="entry-title">
         <div className="entry-photo">
           <div className="entry-photo-top"><span>01 / GEORGRAD</span><span>{t.photoTop}</span></div>
-          <div className="entry-photo-copy"><span className="entry-overline">{t.journal}</span><h1 id="entry-title"><span className="entry-headline-desktop">{t.headline}</span><span className="entry-headline-mobile">{t.mobileHeadline}</span></h1><p>{t.subtitle}</p></div>
+          <div className="entry-photo-copy"><span className="entry-overline">{t.journal}</span><h1 id="entry-title"><span className="entry-headline-desktop">{t.headline}</span><span className="entry-headline-mobile">{t.mobileHeadline}</span></h1><span className="entry-shout" aria-hidden="true">{t.shout}</span><p>{t.subtitle}</p></div>
           <span className="entry-photo-bottom">{t.photoBottom}</span>
         </div>
         <aside id="account" className="entry-account">
