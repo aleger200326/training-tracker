@@ -4,10 +4,11 @@ import { Activity, ArrowRight, CalendarDays, Check, ChevronDown, ChevronLeft, Ch
 import { catalog, displayInstructions, displayName, equipmentLabel, focusOf, imageUrl, levelLabel, muscleLabel, placeOf } from './catalog';
 import { AppData, Exercise, initialData, Plan, PlanItem, Session, validImport } from './db';
 import { loadCloudData, saveCloudData } from './cloud';
-import AuthGate from './AuthGate';
+import AuthGate from './AuthGateEditorial';
 import { makeRecommendedPlan, makeStarterSchedule, recommendedFocus, suitableExercises } from './recommend';
 import { formatDate, getUiLanguage, localizedPlanName, profileAdviceText, recommendationAdviceText, setUiLanguage, uiText, type Language } from './i18n';
 import './style.css';
+import './editorial.css';
 type Tab = 'dashboard' | 'catalog' | 'plans' | 'calendar' | 'profile';
 const tabs: {
     id: Tab;
