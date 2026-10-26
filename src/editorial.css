@@ -150,7 +150,9 @@ html[data-theme=dark] .entry-dialog-photo, html[data-theme=dark] .motion-demo, h
 .accent-dot { color: var(--accent); }
 .primary-button, .outline-button, .ghost-button, .square-button, .filter-select, .filter-select select, .search-box, .focus-tabs button, .equipment-chips button { border-radius: 6px; }
 .theme-control, .language-control select { border-radius: 6px; }
-.language-control select { width: 184px; max-width: none; padding: 0 34px 0 14px; }
+.language-control { position: relative; }
+.language-control select { width: 142px; max-width: none; padding: 0 32px 0 12px; appearance: none; }
+.language-control::after { content: ''; position: absolute; right: 13px; top: 50%; width: 7px; height: 7px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: translateY(-65%) rotate(45deg); pointer-events: none; }
 .primary-button, html[data-theme=dark] .primary-button { background: var(--accent-action); border-color: var(--accent-action); color: #fff; }
 .primary-button:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
 .outline-button, .square-button, .language-control select, .theme-control { background: var(--sheet); color: var(--ink); border-color: var(--line); }
@@ -281,7 +283,7 @@ html[data-theme=dark] .featured-card svg:last-child { color: var(--accent); }
   .plan-card { grid-template-columns: 1fr; }
   .plan-card-preview { border-left: 0; border-top: 1px solid var(--line); padding: 20px; }
   .plan-card-main { padding: 20px; }
-  .language-control select { width: 138px; padding-right: 27px; }
+  .language-control select { width: 138px; }
 }
 
 @media (max-width: 1000px) {
