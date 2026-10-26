@@ -21,6 +21,7 @@ const copy = {
     all: 'Все', home: 'Дома', gym: 'В зале', how: 'Как выполнять',
     close: 'Закрыть', unavailable: 'Фото недоступно', view: 'Смотреть упражнение', privacy: 'Конфиденциальность',
     terms: 'Условия использования', start: 'Начать работу',
+    rhythm: ['ПЛАНИРУЙ', 'ЗАПИСЫВАЙ', 'ПОВТОРЯЙ'],
   },
   uz: {
     journal: 'MASHG‘ULOTLAR KUNDALIGI', photoTop: 'ONG BILAN MASHQ QIL', photoBottom: 'REJA · HARAKAT · NATIJA', headline: <>HAR BIR<br />HARAKAT MUHIM.</>, mobileHeadline: <>HAR KUN<br />HISOBDA.</>,
@@ -35,6 +36,7 @@ const copy = {
     all: 'Barchasi', home: 'Uyda', gym: 'Zalda', how: 'Qanday bajariladi',
     close: 'Yopish', unavailable: 'Rasm mavjud emas', view: 'Mashqni ko‘rish', privacy: 'Maxfiylik',
     terms: 'Foydalanish shartlari', start: 'Boshlash',
+    rhythm: ['REJALA', 'YOZIB BOR', 'TAKRORLA'],
   },
   en: {
     journal: 'TRAINING JOURNAL', photoTop: 'TRAIN WITH INTENTION', photoBottom: 'PLAN · MOVE · PROGRESS', headline: <>EVERY REP<br />COUNTS.</>, mobileHeadline: <>EVERY REP<br />COUNTS.</>,
@@ -49,6 +51,7 @@ const copy = {
     all: 'All', home: 'At home', gym: 'At the gym', how: 'How to do it',
     close: 'Close', unavailable: 'Image unavailable', view: 'View exercise', privacy: 'Privacy',
     terms: 'Terms of use', start: 'Get started',
+    rhythm: ['PLAN', 'RECORD', 'REPEAT'],
   },
 }
 const previewOrder = ['Bodyweight_Squat', 'Dumbbell_Bench_Press', 'Pullups', 'Barbell_Bench_Press_-_Medium_Grip', 'Plank', 'Pushups']
@@ -151,7 +154,7 @@ export default function AuthGateEditorial({ children }: { children: (user: User,
               {message && <div className="entry-message" role="status">{message}</div>}
             </>}
           </div>
-          <div className="entry-account-bottom"><span>ПЛАНИРУЙ</span><span>ЗАПИСЫВАЙ</span><span>ПОВТОРЯЙ</span></div>
+          <div className="entry-account-bottom">{t.rhythm.map(word => <span key={word}>{word}</span>)}</div>
         </aside>
       </section>
 
