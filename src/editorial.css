@@ -262,6 +262,9 @@ html[data-theme=dark] .featured-card svg:last-child { color: var(--accent); }
 
 /* The image and its card share the same clipping edge at every grid width. */
 .featured-card, .exercise-card, .plan-card, .entry-preview-item { min-width: 0; overflow: hidden; }
+.featured-card { padding-top: 12px; }
+.featured-card > div:last-child { min-width: 0; }
+.featured-card strong { width: calc(100% - 27px); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding-right: 0; }
 .featured-card .exercise-image, .exercise-card .exercise-image,
 .entry-preview-image { display: block; width: 100%; max-width: 100%; overflow: hidden; }
 .featured-card .exercise-image img, .exercise-card .exercise-image img,
