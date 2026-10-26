@@ -97,8 +97,9 @@ html[data-theme=dark] .entry-header { background: #1d2830; }
 .entry-message { margin-top: 20px; padding: 15px; border: 1px solid var(--line); border-radius: 6px; font-size: 14px; overflow-wrap: anywhere; }
 .entry-account-bottom { padding: 0 32px 26px; color: var(--quiet); flex-wrap: wrap; }
 .entry-preview { padding: 80px 26px 100px; }
-.entry-section-heading { display: grid; grid-template-columns: minmax(0, 1fr) minmax(180px, .4fr); align-items: end; gap: 15px 32px; border-bottom: 1px solid var(--line); padding-bottom: 30px; }
+.entry-section-heading { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(180px, .4fr); align-items: end; gap: 15px 32px; border-bottom: 1px solid var(--line); padding-bottom: 30px; }
 .entry-section-heading > span { grid-column: 1 / -1; }
+.entry-section-heading > .entry-preview-hand-note { position: absolute; top: -4px; right: 7%; width: max-content; font: 400 clamp(29px, 3.5vw, 48px)/1 'Mostwazted', cursive; letter-spacing: 0; color: var(--accent); transform: rotate(-7deg); pointer-events: none; }
 .entry-section-heading h2 { font: 400 clamp(35px, 4vw, 61px)/1.12 'Furore', sans-serif; text-transform: uppercase; letter-spacing: -.03em; margin: 0; max-width: 900px; }
 .entry-section-heading p { color: var(--quiet); margin: 0; font-size: 17px; line-height: 1.4; max-width: 320px; }
 .entry-preview-controls { display: flex; flex-wrap: wrap; gap: 8px; margin: 25px 0; }
@@ -426,6 +427,7 @@ html[data-theme=dark] .panel:not(.recommendation-panel):not(.advice-panel).data-
   .entry-account-bottom { padding: 0 20px 24px; }
   .entry-preview { padding: 60px 16px 75px; }
   .entry-section-heading { display: block; }
+  .entry-section-heading > .entry-preview-hand-note { position: relative; top: auto; right: auto; display: block; margin: 4px 0 -5px auto; font-size: 32px; }
   .entry-section-heading h2 { margin: 18px 0; font-size: clamp(32px, 8vw, 52px); }
   .entry-section-heading p { max-width: 460px; }
   .entry-footer { padding: 24px 16px; flex-wrap: wrap; }

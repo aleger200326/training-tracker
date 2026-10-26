@@ -18,7 +18,7 @@ const copy = {
     submitUp: 'Создать аккаунт', foot: 'Ваши записи сохраняются в вашем аккаунте.',
     checkEmail: 'Аккаунт создан. Если пришло письмо с подтверждением, откройте его и затем войдите.',
     loading: 'Загружаем аккаунт…', config: 'Для входа нужно подключить Neon.',
-    preview: 'Загляните внутрь', previewTitle: 'Найди своё движение.',
+    preview: 'Загляните внутрь', previewTitle: 'Найди своё движение.', previewHand: 'ПРОБУЙ',
     previewText: 'Откройте упражнение, чтобы посмотреть технику. В каталоге есть варианты для дома и зала.',
     all: 'Все', home: 'Дома', gym: 'В зале', how: 'Как выполнять',
     close: 'Закрыть', unavailable: 'Фото недоступно', view: 'Смотреть упражнение', privacy: 'Конфиденциальность',
@@ -34,7 +34,7 @@ const copy = {
     submitUp: 'Hisob yaratish', foot: 'Yozuvlaringiz hisobingizda saqlanadi.',
     checkEmail: 'Hisob yaratildi. Tasdiqlash xati kelsa, uni oching va keyin kiring.',
     loading: 'Hisob yuklanmoqda…', config: 'Kirish uchun Neon xizmatini ulang.',
-    preview: 'Ichkariga nazar', previewTitle: 'O‘z harakatingni top.',
+    preview: 'Ichkariga nazar', previewTitle: 'O‘z harakatingni top.', previewHand: 'SINAB KO‘R',
     previewText: 'Texnikani ko‘rish uchun mashqni oching. Katalogda uy va zal uchun mashqlar bor.',
     all: 'Barchasi', home: 'Uyda', gym: 'Zalda', how: 'Qanday bajariladi',
     close: 'Yopish', unavailable: 'Rasm mavjud emas', view: 'Mashqni ko‘rish', privacy: 'Maxfiylik',
@@ -50,7 +50,7 @@ const copy = {
     submitUp: 'Create account', foot: 'Your records are saved to your account.',
     checkEmail: 'Account created. If a confirmation email arrives, open it and then sign in.',
     loading: 'Loading account…', config: 'Connect Neon to enable sign-in.',
-    preview: 'Look inside', previewTitle: 'Find your movement.',
+    preview: 'Look inside', previewTitle: 'Find your movement.', previewHand: 'TRY IT',
     previewText: 'Open an exercise to see the technique. The catalog covers home and gym.',
     all: 'All', home: 'At home', gym: 'At the gym', how: 'How to do it',
     close: 'Close', unavailable: 'Image unavailable', view: 'View exercise', privacy: 'Privacy',
@@ -218,7 +218,7 @@ export default function AuthGateEditorial({ children }: { children: (user: User,
       </section>
 
       <section className="entry-preview" aria-labelledby="entry-preview-title">
-        <div className="entry-section-heading"><span>03 / {t.preview}</span><h2 id="entry-preview-title">{t.previewTitle}</h2><p>{t.previewText}</p></div>
+        <div className="entry-section-heading"><span>03 / {t.preview}</span><span className="entry-preview-hand-note" aria-hidden="true">{t.previewHand}</span><h2 id="entry-preview-title">{t.previewTitle}</h2><p>{t.previewText}</p></div>
         <div className="entry-preview-controls" role="group" aria-label={t.preview}>
           {([['Все', t.all], ['Дом', t.home], ['Зал', t.gym]] as const).map(([value, label]) => <button key={value} type="button" className={previewPlace === value ? 'selected' : ''} aria-pressed={previewPlace === value} onClick={() => setPreviewPlace(value)}>{label}</button>)}
         </div>
