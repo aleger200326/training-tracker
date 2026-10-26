@@ -99,7 +99,7 @@ html[data-theme=dark] .entry-header { background: #1d2830; }
 .entry-preview { padding: 80px 26px 100px; }
 .entry-section-heading { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(180px, .4fr); align-items: end; gap: 15px 32px; border-bottom: 1px solid var(--line); padding-bottom: 30px; }
 .entry-section-heading > span { grid-column: 1 / -1; }
-.entry-section-heading > .entry-preview-hand-note { position: absolute; top: -4px; right: 7%; width: max-content; font: 400 clamp(29px, 3.5vw, 48px)/1 'Mostwazted', cursive; letter-spacing: 0; color: var(--accent); transform: rotate(-7deg); pointer-events: none; }
+.entry-section-heading > .entry-preview-hand-note { position: absolute; top: -27px; right: 9%; width: max-content; font: 400 clamp(29px, 3.5vw, 48px)/1 'Mostwazted', cursive; letter-spacing: 0; color: var(--accent); transform: rotate(-7deg); pointer-events: none; }
 .entry-section-heading h2 { font: 400 clamp(35px, 4vw, 61px)/1.12 'Furore', sans-serif; text-transform: uppercase; letter-spacing: -.03em; margin: 0; max-width: 900px; }
 .entry-section-heading p { color: var(--quiet); margin: 0; font-size: 17px; line-height: 1.4; max-width: 320px; }
 .entry-preview-controls { display: flex; flex-wrap: wrap; gap: 8px; margin: 25px 0; }
