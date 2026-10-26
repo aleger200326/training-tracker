@@ -152,7 +152,7 @@ html[data-theme=dark] .entry-dialog-photo, html[data-theme=dark] .motion-demo, h
 .profile-avatar-preview { flex: none; width: 78px; height: 78px; display: grid; place-items: center; overflow: hidden; border-radius: 10px; background: var(--accent-action); color: #fff; font: 700 25px 'Roboto Mono', monospace; }
 .profile-avatar-copy { min-width: 0; }
 .profile-avatar-copy strong { display: block; font-size: 14px; }
-.profile-avatar-copy p { margin: 4px 0 10px; color: var(--quiet); font-size: 12px; line-height: 1.4; }
+.profile-panel .profile-avatar-copy p { margin: 4px 0 10px; color: var(--quiet); font-size: 12px; line-height: 1.4; }
 .profile-avatar-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
 .profile-avatar-actions .outline-button { min-height: 36px; padding: 7px 12px; font-size: 12px; }
 .profile-avatar-remove { min-height: 36px; padding: 7px 10px; border: 0; background: transparent; color: var(--quiet); font-size: 12px; cursor: pointer; }
