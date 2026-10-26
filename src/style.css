@@ -38,4 +38,7 @@ html[data-theme=dark]{color-scheme:dark;background:#101713;color:#eef4e9}html[da
 .auth-card form input:focus-visible{outline:2px solid #91c14c;outline-offset:2px}
 .auth-submit{width:100%;justify-content:center;margin-top:5px}
 .auth-message{margin-top:19px;border-radius:10px;padding:12px 14px;background:var(--bg,#f6f7f3);color:var(--text,#18241d);font-size:13px;line-height:1.5;overflow-wrap:anywhere}
+html[data-theme=dark] .auth-shell{--bg:#101713;--surface:#1a281f;--border:#34483a;--text:#eef4e9;--muted:#b9cbb5}
+html[data-theme=dark] .auth-icon{background:#31472b;color:#c3eb66}
+html[data-theme=dark] .auth-brand{color:#b8e17c}
 @media(max-width:500px){.auth-shell{padding:16px}.auth-card{padding:24px}.auth-top{flex-wrap:wrap}}
