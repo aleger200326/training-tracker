@@ -142,7 +142,7 @@ html[data-theme=dark] .entry-dialog-photo, html[data-theme=dark] .motion-demo, h
 .side-motivation .mini-icon { display: none; }
 .side-motivation strong { font: 400 18px/1.2 'Furore', sans-serif; text-transform: uppercase; }
 .hand-note { display: inline-block; font: 400 32px/1 'Mostwazted', cursive; letter-spacing: 0; text-transform: none; color: var(--accent-on-photo); }
-.side-hand-note { margin: 3px 0 0 12px; font-size: 24px; transform: rotate(-5deg); }
+.side-hand-note { display: block; width: max-content; max-width: 100%; margin: 0 8px 13px auto; font-size: 24px; transform: rotate(-5deg); }
 .side-motivation p { color: #d2c9b9; }
 .topbar, html[data-theme=dark] .topbar { background: var(--sheet); border-color: var(--line); }
 .breadcrumb, .today-pill { color: var(--quiet); }
