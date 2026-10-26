@@ -141,6 +141,8 @@ html[data-theme=dark] .entry-dialog-photo, html[data-theme=dark] .motion-demo, h
 .side-motivation { border-radius: 8px; border-color: #53626b; background: transparent; }
 .side-motivation .mini-icon { display: none; }
 .side-motivation strong { font: 400 18px/1.2 'Furore', sans-serif; text-transform: uppercase; }
+.hand-note { display: inline-block; font: 400 32px/1 'Mostwazted', cursive; letter-spacing: 0; text-transform: none; color: var(--accent-on-photo); }
+.side-hand-note { margin: 3px 0 0 12px; font-size: 24px; transform: rotate(-5deg); }
 .side-motivation p { color: #d2c9b9; }
 .topbar, html[data-theme=dark] .topbar { background: var(--sheet); border-color: var(--line); }
 .breadcrumb, .today-pill { color: var(--quiet); }
@@ -164,6 +166,7 @@ html[data-theme=dark] .entry-dialog-photo, html[data-theme=dark] .motion-demo, h
 .hero-tag, .hero-content h2 em { color: #a4cee6; }
 .hero-tag span { background: #a4cee6; }
 .hero-content h2 { font: 400 clamp(29px, 3vw, 44px)/1.15 'Furore', sans-serif; text-transform: uppercase; letter-spacing: -.025em; margin: 18px 0; }
+.hero-hand-note { align-self: flex-end; margin: -11px 13% 9px 0; font-size: clamp(29px, 3vw, 41px); transform: rotate(-6deg); }
 .hero-content p { font-size: 14px; color: #ede6da; }
 .hero-content button { width: max-content; background: #ece9df; color: #201f1b; border-radius: 6px; font-size: 13px; min-height: 43px; }
 .hero-art { display: none; }
@@ -193,6 +196,7 @@ html[data-theme=dark] .entry-dialog-photo, html[data-theme=dark] .motion-demo, h
 html[data-theme=dark] .equipment-chips button.selected { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
 .week-day, .calendar-day, .calendar-blank { background: var(--paper); border-color: var(--line); color: var(--ink); }
 .recommendation-panel, .advice-panel { background: #dfe9ef; color: #202a32; border-color: var(--line); }
+.recommendation-hand-note { color: var(--accent); white-space: nowrap; margin: 0 10px 5px 12px; transform: rotate(-6deg); }
 html[data-theme=dark] .recommendation-panel, html[data-theme=dark] .advice-panel { background: #293c49; color: var(--ink); border-color: var(--line); }
 .rec-focus, .date-line, .text-button { color: var(--accent); }
 .week-day.current { border-color: var(--accent); }
