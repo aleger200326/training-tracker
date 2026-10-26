@@ -142,7 +142,7 @@ export default function AuthGateEditorial({ children }: { children: (user: User,
         <aside id="account" className="entry-account">
           <div className="entry-account-top"><span>02 / {t.entry}</span><span>GEORGRAD</span></div>
           <div className="entry-account-inner">
-            <div className="entry-account-title"><span>{t.journal}</span><h2>{mode === 'in' ? t.enter : t.create}</h2><p>{t.foot}</p></div>
+            <div className="entry-account-title"><span>{t.journal}</span><h2 className={mode === 'up' ? 'entry-registration-title' : undefined}>{mode === 'in' ? t.enter : t.create}</h2><p>{t.foot}</p></div>
             {!cloudConfigured ? <div className="entry-message" role="alert">{t.config}</div> : loading ? <div className="entry-message">{t.loading}</div> : <>
               <div className="entry-tabs" role="tablist" aria-label={t.entry}>
                 <button role="tab" aria-selected={mode === 'in'} className={mode === 'in' ? 'active' : ''} onClick={() => { setMode('in'); setMessage('') }}>{t.enter}</button>

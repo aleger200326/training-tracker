@@ -62,6 +62,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .entry-account-inner { width: 100%; padding: 32px; margin: auto 0; }
 .entry-account-title > span, .entry-section-heading > span { font-size: 11px; letter-spacing: .16em; font-weight: 700; color: var(--accent); text-transform: uppercase; }
 .entry-account-title h2 { font: 400 clamp(36px, 3.5vw, 53px)/1.12 'Furore', sans-serif; text-transform: uppercase; margin: 17px 0 13px; letter-spacing: -.02em; }
+.entry-account-title h2.entry-registration-title { font-size: clamp(24px, 2.2vw, 31px); overflow-wrap: anywhere; }
 .entry-account-title p { color: var(--quiet); margin: 0 0 38px; font-size: 15px; line-height: 1.45; }
 .entry-tabs { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--line); margin-bottom: 29px; }
 .entry-tabs button { background: transparent; border: 0; color: var(--quiet); font-weight: 700; text-align: left; padding: 0 0 13px; }
