@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { cloud, cloudConfigured } from './cloud'
 import { catalog, displayInstructions, displayName, imageUrl, placeOf } from './catalog'
 import { getUiLanguage, setUiLanguage, type Language } from './i18n'
@@ -79,11 +79,54 @@ export default function AuthGateEditorial({ children }: { children: (user: User,
   const [message, setMessage] = useState('')
   const [previewPlace, setPreviewPlace] = useState<'Все' | 'Дом' | 'Зал'>('Все')
   const [selected, setSelected] = useState<Exercise | null>(null)
+  const photoRef = useRef<HTMLDivElement>(null)
+  const revealRef = useRef<HTMLDivElement>(null)
   const t = copy[language]
   const preview = previewPool.filter(e => previewPlace === 'Все' || placeOf(e) === previewPlace).slice(0, 4)
 
   useEffect(() => { document.documentElement.dataset.theme = theme; localStorage.setItem('atletika-theme', theme) }, [theme])
   useEffect(() => { setUiLanguage(language); localStorage.setItem('atletika-language', language); document.documentElement.lang = language }, [language])
+  useEffect(() => {
+    const photo = photoRef.current
+    const reveal = revealRef.current
+    if (!photo || !reveal || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    let frame = 0
+    let x = -500, y = -500, radius = 0
+    let targetX = x, targetY = y, targetRadius = 0
+    const paint = () => {
+      x += (targetX - x) * .24
+      y += (targetY - y) * .24
+      radius += (targetRadius - radius) * .24
+      const mask = `radial-gradient(circle ${radius}px at ${x}px ${y}px, #fff 0%, #fff 42%, rgba(255,255,255,.78) 62%, transparent 100%)`
+      reveal.style.webkitMaskImage = mask
+      reveal.style.maskImage = mask
+      if (Math.abs(targetX - x) + Math.abs(targetY - y) + Math.abs(targetRadius - radius) > .5) frame = requestAnimationFrame(paint)
+      else frame = 0
+    }
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(paint) }
+    const move = (event: PointerEvent) => {
+      if (event.pointerType === 'touch' && event.buttons === 0) return
+      const rect = photo.getBoundingClientRect()
+      targetX = event.clientX - rect.left
+      targetY = event.clientY - rect.top
+      targetRadius = window.innerWidth < 480 ? 145 : window.innerWidth < 720 ? 190 : 280
+      schedule()
+    }
+    const leave = () => { targetRadius = 0; schedule() }
+    photo.addEventListener('pointermove', move)
+    photo.addEventListener('pointerdown', move)
+    photo.addEventListener('pointerleave', leave)
+    photo.addEventListener('pointerup', leave)
+    photo.addEventListener('pointercancel', leave)
+    return () => {
+      cancelAnimationFrame(frame)
+      photo.removeEventListener('pointermove', move)
+      photo.removeEventListener('pointerdown', move)
+      photo.removeEventListener('pointerleave', leave)
+      photo.removeEventListener('pointerup', leave)
+      photo.removeEventListener('pointercancel', leave)
+    }
+  }, [])
   useEffect(() => {
     if (!selected) return
     const previous = document.body.style.overflow
@@ -143,7 +186,9 @@ export default function AuthGateEditorial({ children }: { children: (user: User,
 
     <main id="top" className="entry-main">
       <section className="entry-hero" aria-labelledby="entry-title">
-        <div className="entry-photo">
+        <div className="entry-photo" ref={photoRef}>
+          <div className="entry-photo-base" aria-hidden="true" />
+          <div className="entry-photo-reveal" ref={revealRef} aria-hidden="true" />
           <div className="entry-photo-top"><span>01 / GEORGRAD</span><span>{t.photoTop}</span></div>
           <div className="entry-photo-copy"><span className="entry-overline">{t.journal}</span><h1 id="entry-title"><span className="entry-headline-desktop">{t.headline}</span><span className="entry-headline-mobile">{t.mobileHeadline}</span></h1><span className="entry-shout" aria-hidden="true">{t.shout}</span><p>{t.subtitle}</p></div>
           <span className="entry-photo-bottom">{t.photoBottom}</span>
