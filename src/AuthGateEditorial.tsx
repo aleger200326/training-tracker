@@ -17,7 +17,7 @@ const copy = {
     submitUp: 'Создать аккаунт', foot: 'Ваши записи сохраняются в вашем аккаунте.',
     checkEmail: 'Аккаунт создан. Если пришло письмо с подтверждением, откройте его и затем войдите.',
     loading: 'Загружаем аккаунт…', config: 'Для входа нужно подключить Neon.',
-    preview: 'Загляните внутрь', previewTitle: 'Упражнения для настоящих занятий.',
+    preview: 'Загляните внутрь', previewTitle: 'Найди своё движение.',
     previewText: 'Откройте упражнение, чтобы посмотреть технику. В каталоге есть варианты для дома и зала.',
     all: 'Все', home: 'Дома', gym: 'В зале', how: 'Как выполнять',
     close: 'Закрыть', unavailable: 'Фото недоступно', view: 'Смотреть упражнение', privacy: 'Конфиденциальность',
@@ -33,7 +33,7 @@ const copy = {
     submitUp: 'Hisob yaratish', foot: 'Yozuvlaringiz hisobingizda saqlanadi.',
     checkEmail: 'Hisob yaratildi. Tasdiqlash xati kelsa, uni oching va keyin kiring.',
     loading: 'Hisob yuklanmoqda…', config: 'Kirish uchun Neon xizmatini ulang.',
-    preview: 'Ichkariga nazar', previewTitle: 'Haqiqiy mashg‘ulotlar uchun mashqlar.',
+    preview: 'Ichkariga nazar', previewTitle: 'O‘z harakatingni top.',
     previewText: 'Texnikani ko‘rish uchun mashqni oching. Katalogda uy va zal uchun mashqlar bor.',
     all: 'Barchasi', home: 'Uyda', gym: 'Zalda', how: 'Qanday bajariladi',
     close: 'Yopish', unavailable: 'Rasm mavjud emas', view: 'Mashqni ko‘rish', privacy: 'Maxfiylik',
@@ -49,7 +49,7 @@ const copy = {
     submitUp: 'Create account', foot: 'Your records are saved to your account.',
     checkEmail: 'Account created. If a confirmation email arrives, open it and then sign in.',
     loading: 'Loading account…', config: 'Connect Neon to enable sign-in.',
-    preview: 'Look inside', previewTitle: 'Exercises for real training.',
+    preview: 'Look inside', previewTitle: 'Find your movement.',
     previewText: 'Open an exercise to see the technique. The catalog covers home and gym.',
     all: 'All', home: 'At home', gym: 'At the gym', how: 'How to do it',
     close: 'Close', unavailable: 'Image unavailable', view: 'View exercise', privacy: 'Privacy',
@@ -175,7 +175,7 @@ export default function AuthGateEditorial({ children }: { children: (user: User,
 
   return <div className="entry-page">
     <header className="entry-header">
-      <a className="entry-logo" href="#top" aria-label="GEORGRAD">GEORGRAD<span className="entry-logo-mark">/</span></a>
+      <a className="entry-logo" href="#top" aria-label="GEORGRAD">GEORGRAD</a>
       <span className="entry-header-note">{t.journal}</span>
       <div className="entry-controls">
         <select aria-label="Language / Til / Язык" value={language} onChange={e => { const next = e.target.value as Language; setUiLanguage(next); setLanguage(next) }}>

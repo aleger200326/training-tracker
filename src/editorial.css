@@ -46,7 +46,6 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .entry-header, .entry-footer { max-width: 1540px; margin: auto; display: flex; align-items: center; }
 .entry-header { min-height: 74px; padding: 0 26px; gap: 30px; border-bottom: 1px solid var(--line); }
 .entry-logo { text-decoration: none; font: 800 29px/1 'Furore', sans-serif; letter-spacing: .035em; }
-.entry-logo-mark { color: var(--accent); margin-left: 3px; }
 .entry-header-note { font-size: 11px; font-weight: 700; letter-spacing: .14em; margin-left: auto; }
 .entry-controls { display: flex; align-items: center; gap: 0; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
 .entry-controls select, .entry-controls button { height: 39px; background: transparent; border: 0; color: var(--ink); font-size: 12px; font-weight: 700; padding: 0 14px; }
