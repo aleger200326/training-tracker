@@ -20,10 +20,10 @@
 }
 html[data-theme=dark] {
   --paper: #171d22;
-  --sheet: #222b32;
+  --sheet: #222622;
   --ink: #f1eee5;
   --quiet: #b8c1c7;
-  --line: #596771;
+  --line: #56605e;
   --accent: #94c4df;
   --accent-action: #28668f;
   --accent-soft: #294355;
@@ -63,7 +63,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .entry-photo-copy p { font-size: clamp(16px, 1.4vw, 20px); max-width: 425px; line-height: 1.38; margin: 0; }
 .entry-photo-bottom { border-top: 1px solid rgba(255,255,255,.55); padding-top: 12px; width: 100%; }
 .entry-account { background: var(--sheet); border-left: 1px solid var(--line); display: flex; flex-direction: column; min-width: 0; }
-html[data-theme=dark] .entry-account { background: #222622; }
+html[data-theme=dark] .entry-account { background: var(--sheet); }
 .entry-account-top { padding: 36px 32px 0; color: var(--quiet); }
 .entry-account-inner { width: 100%; padding: 32px; margin: auto 0; }
 .entry-account-title > span, .entry-section-heading > span { font-size: 11px; letter-spacing: .16em; font-weight: 700; color: var(--accent); text-transform: uppercase; }
@@ -173,7 +173,8 @@ html[data-theme=dark] .entry-dialog-photo, html[data-theme=dark] .motion-demo, h
 .modal-copy ol { font-size: 16px; line-height: 1.55; }
 .motion-demo img { max-height: none; filter: none; }
 .stat-grid { gap: 0; border-left: 1px solid var(--line); border-top: 1px solid var(--line); }
-.stat-card { border-left: 0; border-top: 0; }
+.stat-grid { border-radius: 8px; overflow: hidden; }
+.stat-card { border-left: 0; border-top: 0; border-radius: 0; min-width: 0; }
 .stat-card strong { font: 400 32px/1.1 'Furore', sans-serif; color: var(--ink); }
 .stat-icon { border-radius: 6px; background: transparent !important; color: var(--accent) !important; }
 .section-head h2, .calendar-panel h2, .day-panel h2, .profile-panel h2, .profile-side h2, .next-card h3 { font-family: 'Furore', sans-serif; text-transform: uppercase; letter-spacing: 0; }
@@ -203,6 +204,57 @@ html[data-theme=dark] .main, html[data-theme=dark] body { background: var(--pape
 html[data-theme=dark] .next-card, html[data-theme=dark] .panel:not(.recommendation-panel):not(.advice-panel), html[data-theme=dark] .stat-card, html[data-theme=dark] .exercise-card, html[data-theme=dark] .plan-card, html[data-theme=dark] .catalog-toolbar, html[data-theme=dark] .featured-card, html[data-theme=dark] .empty-state, html[data-theme=dark] .exercise-modal, html[data-theme=dark] .form-modal { background: var(--sheet); border-color: var(--line); color: var(--ink); }
 html[data-theme=dark] .stat-card strong, html[data-theme=dark] .next-card h3, html[data-theme=dark] .featured-card strong, html[data-theme=dark] .exercise-card h3, html[data-theme=dark] .plan-card h3 { color: var(--ink); }
 html[data-theme=dark] .search-box, html[data-theme=dark] .filter-select, html[data-theme=dark] .filter-select select, html[data-theme=dark] .outline-button, html[data-theme=dark] .square-button, html[data-theme=dark] .form-modal input, html[data-theme=dark] .form-modal select, html[data-theme=dark] .form-modal textarea, html[data-theme=dark] .profile-panel input, html[data-theme=dark] .profile-panel select, html[data-theme=dark] .language-control select, html[data-theme=dark] .theme-control, html[data-theme=dark] .week-day, html[data-theme=dark] .calendar-day, html[data-theme=dark] .calendar-blank { background: var(--paper); border-color: var(--line); color: var(--ink); }
+
+/* Keep every dark surface neutral and reserve blue for active controls. */
+html[data-theme=dark] .sidebar { background: var(--sheet); border-color: var(--line); }
+html[data-theme=dark] .sidebar .nav-item.active,
+html[data-theme=dark] .sidebar .nav-item:hover { background: var(--accent-action); border-left-color: var(--accent); color: #fff; }
+html[data-theme=dark] .sidebar .nav-item.active svg,
+html[data-theme=dark] .sidebar .nav-item:hover svg { color: #d2e8f4; }
+html[data-theme=dark] .entry-preview { background: var(--sheet); }
+html[data-theme=dark] .entry-preview-item { background: var(--sheet); }
+html[data-theme=dark] .entry-preview-image,
+html[data-theme=dark] .entry-dialog-photo,
+html[data-theme=dark] .exercise-motion,
+html[data-theme=dark] .motion-demo,
+html[data-theme=dark] .exercise-image,
+html[data-theme=dark] .media-fallback { background: var(--sheet); color: var(--quiet); }
+html[data-theme=dark] .focus-tabs button:not(.selected),
+html[data-theme=dark] .note-label textarea,
+html[data-theme=dark] .day-add select,
+html[data-theme=dark] .picker-list,
+html[data-theme=dark] .picker-list button,
+html[data-theme=dark] .equipment-chips button:not(.selected),
+html[data-theme=dark] .card-edit button,
+html[data-theme=dark] .session-actions button { background: var(--sheet); border-color: var(--line); color: var(--ink); }
+html[data-theme=dark] .focus-tabs button.selected,
+html[data-theme=dark] .entry-preview-controls button.selected { background: var(--accent-action); border-color: var(--accent-action); color: #fff; }
+html[data-theme=dark] .recommendation-panel,
+html[data-theme=dark] .advice-panel { background: var(--sheet); border-color: var(--line); color: var(--ink); }
+html[data-theme=dark] .recommendation-panel p,
+html[data-theme=dark] .advice-panel p,
+html[data-theme=dark] .profile-side .data-panel p { color: var(--quiet); }
+html[data-theme=dark] .week-day.done,
+html[data-theme=dark] .calendar-day.selected { background: var(--accent-soft); }
+html[data-theme=dark] .week-day.planned { background: var(--sheet); }
+html[data-theme=dark] .calendar-day:hover,
+html[data-theme=dark] .picker-list button:hover { background: var(--accent-soft); }
+html[data-theme=dark] .chips span { background: var(--accent-soft); color: var(--accent); }
+html[data-theme=dark] .status-label,
+html[data-theme=dark] .text-button { color: var(--accent); }
+html[data-theme=dark] .selected-items > div,
+html[data-theme=dark] .session-card { border-color: var(--line); }
+html[data-theme=dark] .modal-close { background: var(--sheet); color: var(--ink); }
+html[data-theme=dark] .ghost-button { color: var(--ink); }
+html[data-theme=dark] .featured-card span,
+html[data-theme=dark] .featured-card svg:last-child { color: var(--accent); }
+
+/* The image and its card share the same clipping edge at every grid width. */
+.featured-card, .exercise-card, .plan-card, .entry-preview-item { min-width: 0; overflow: hidden; }
+.featured-card .exercise-image, .exercise-card .exercise-image,
+.entry-preview-image { display: block; width: 100%; max-width: 100%; overflow: hidden; }
+.featured-card .exercise-image img, .exercise-card .exercise-image img,
+.entry-preview-image img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
 @media (max-width: 1000px) {
   .entry-hero { grid-template-columns: minmax(0, 1.35fr) minmax(310px, .9fr); }
